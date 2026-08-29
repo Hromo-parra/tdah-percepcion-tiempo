@@ -1,0 +1,10 @@
+.DS_Store
+
+# Material local y versión combinada con otro equipo.
+ABRIR-TAREA-produccion-temporal.html
+ABRIR-TAREAS-Equipo1-y-Equipo2.html
+LEEME-PRIMERO.txt
+
+# Archivos temporales de editores.
+*.swp
+*~
