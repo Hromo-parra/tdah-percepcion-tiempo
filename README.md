@@ -1,6 +1,6 @@
 # TDAH y percepción subjetiva del tiempo
 
-Aplicación de investigación académica para administrar una tarea de **producción temporal** en adultos jóvenes. La persona produce intervalos de 2, 5, 10 y 30 segundos sin una referencia temporal visible.
+Aplicación de investigación académica para administrar una tarea de **producción temporal** en adultos jóvenes. La persona produce intervalos de 2, 6, 12, 24, 36 y 48 segundos sin una referencia temporal visible.
 
 **Aplicación publicada:** <https://hromo-parra.github.io/tdah-percepcion-tiempo/>
 
@@ -14,8 +14,21 @@ Aplicación de investigación académica para administrar una tarea de **producc
 | Bloque experimental 1 | 12 | No |
 | Pausa | — | — |
 | Bloque experimental 2 | 12 | No |
+| Pausa | — | — |
+| Bloque experimental 3 | 12 | No |
 
-Los 24 ensayos experimentales contienen seis repeticiones de cada intervalo objetivo: 2, 5, 10 y 30 segundos. Su orden se genera de manera pseudoaleatoria a partir de una semilla registrada.
+Los 36 ensayos experimentales contienen seis repeticiones de cada intervalo objetivo: 2, 6, 12, 24, 36 y 48 segundos. La presentación sigue exactamente esta secuencia:
+
+```text
+12 36  2 48  6 24
+48 36 24 12  6  2
+24  2 48  6 36 12
+ 6 48 24 36  2 12
+ 2  6 12 24 36 48
+36 12  6  2 48 24
+```
+
+La semilla se conserva como identificador de trazabilidad, pero ya no modifica el orden experimental.
 
 ## Funciones incorporadas
 
@@ -101,6 +114,6 @@ El proyecto está preparado para publicarse directamente desde la raíz de la ra
 
 ## Versiones
 
-- Aplicación: 1.0.0
-- Manual: 1.0
+- Aplicación: 1.1.0
+- Manual: 1.1
 - Adaptación para GitHub Pages: agosto de 2026

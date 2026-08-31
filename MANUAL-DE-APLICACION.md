@@ -60,10 +60,21 @@ No se mide si la persona «acierta»: se mide **en qué dirección y con cuánta
 | Tarea principal, bloque 1 | 12 | 4–5 min | **No** |
 | Pausa | — | 1–2 min | — |
 | Tarea principal, bloque 2 | 12 | 4–5 min | **No** |
+| Pausa | — | 1–2 min | — |
+| Tarea principal, bloque 3 | 12 | 4–5 min | **No** |
 | Cierre y exportación | — | 2 min | — |
-| **Total** | **27** | **15–20 min** | |
+| **Total** | **39** | **25–35 min** | |
 
-Los 24 ensayos experimentales son 6 repeticiones de cada intervalo: **2, 5, 10 y 30 segundos**, en orden pseudoaleatorio.
+Los 36 ensayos experimentales son 6 repeticiones de cada intervalo: **2, 6, 12, 24, 36 y 48 segundos**. El orden es fijo y debe conservarse exactamente:
+
+```text
+12 36  2 48  6 24
+48 36 24 12  6  2
+24  2 48  6 36 12
+ 6 48 24 36  2 12
+ 2  6 12 24 36 48
+36 12  6  2 48 24
+```
 
 ### Las tres reglas de oro de quien aplica
 
@@ -173,7 +184,7 @@ La práctica solo puede repetirse **una vez**. No la ofrezcas porque la persona 
 
 En la pantalla de recomendaciones, refuerza:
 
-> *«Ahora viene la parte principal: 24 ensayos, con una pausa a la mitad. A partir de aquí ya no vas a ver ningún resultado.»*
+> *«Ahora viene la parte principal: 36 ensayos, con pausas breves después de los ensayos 12 y 24. A partir de aquí ya no vas a ver ningún resultado.»*
 >
 > *«Te pido que no cambies de pestaña ni salgas de la pantalla. Si algo pasa, avísame en voz alta y yo me encargo.»*
 >
@@ -181,11 +192,11 @@ En la pantalla de recomendaciones, refuerza:
 
 La aplicación pedirá pantalla completa. Si el navegador no lo permite, no pasa nada: continúa igual y queda registrado.
 
-### Paso 5 — Los 24 ensayos
+### Paso 5 — Los 36 ensayos
 
 Retírate del campo visual. Guarda silencio absoluto.
 
-En la pausa intermedia puedes acercarte brevemente:
+En cada una de las dos pausas puedes acercarte brevemente:
 
 > *«Vas muy bien, tómate un momento. ¿Necesitas agua o estirarte? Cuando quieras, continúa con el botón.»*
 
@@ -313,10 +324,10 @@ LISTA DE VERIFICACIÓN
 [ ] Comprensión de instrucciones verificada
 [ ] Práctica completada        Repetida:  Sí  /  No
 [ ] Pantalla completa activada   Sí  /  No  /  No disponible
-[ ] 24 ensayos completados
+[ ] 36 ensayos completados
 [ ] CSV descargado
 [ ] JSON descargado
-[ ] Filas del CSV verificadas: ______  (esperadas: 28)
+[ ] Filas del CSV verificadas: ______  (esperadas: 40, incluida la cabecera)
 [ ] Respaldo en dos ubicaciones
 [ ] Datos borrados del navegador
 
@@ -410,8 +421,8 @@ Se modifican en la pantalla de configuración, con el botón «Mostrar parámetr
 
 | Parámetro | Valor predeterminado | Notas |
 |-----------|---------------------|-------|
-| Intervalos objetivo | 2, 5, 10, 30 s | Definidos en el protocolo del Equipo 2 |
-| Repeticiones por intervalo | 6 | Total: 24 ensayos |
+| Intervalos objetivo | 2, 6, 12, 24, 36, 48 s | Fijos en el protocolo del Equipo 2 |
+| Repeticiones por intervalo | 6 | Total: 36 ensayos |
 | Intervalos de práctica | 3, 5, 8 s | Distintos de los experimentales, a propósito |
 | Pausa después de | 12 ensayos | `0` desactiva la pausa |
 | Intervalo entre ensayos | 1000–2000 ms | Aleatorio en ese rango |
@@ -501,7 +512,7 @@ Con `P` = producido y `T` = objetivo (milisegundos):
 
 **Sesgo y precisión son cosas distintas y deben reportarse por separado.** Una persona puede tener sesgo cero (sus errores se cancelan) pero precisión pésima (errores enormes en ambas direcciones). Reportar solo el error con signo escondería exactamente eso.
 
-Para comparar entre intervalos de 2 s y de 30 s, usa siempre los indicadores **proporcionales**: un error de 1 segundo es enorme en un intervalo de 2 s y trivial en uno de 30 s.
+Para comparar entre intervalos de 2 s y de 48 s, usa siempre los indicadores **proporcionales**: un error de 1 segundo es enorme en un intervalo de 2 s y pequeño en uno de 48 s.
 
 ---
 
@@ -557,8 +568,8 @@ En el apartado de resultados, informa el número y porcentaje de ensayos excluid
 
 Para la pregunta *«¿difiere la precisión temporal entre adultos jóvenes con y sin diagnóstico de TDAH?»*:
 
-- **ANOVA mixta** con grupo (entre sujetos: TDAH / comparación) e intervalo (intra sujetos: 2, 5, 10, 30 s) sobre el **error proporcional absoluto**.
-- El **efecto de interacción grupo × intervalo** es el más informativo: prueba si el TDAH afecta de forma distinta las duraciones breves y las largas, que es exactamente la hipótesis que motivó incluir cuatro intervalos.
+- **ANOVA mixta** con grupo (entre sujetos: TDAH / comparación) e intervalo (intra sujetos: 2, 6, 12, 24, 36, 48 s) sobre el **error proporcional absoluto**.
+- El **efecto de interacción grupo × intervalo** es el más informativo: prueba si el TDAH afecta de forma distinta las duraciones breves y las largas, que es exactamente la hipótesis que motivó incluir seis intervalos.
 - Alternativa recomendable con datos anidados o desbalanceados: **modelo lineal mixto** con intercepto aleatorio por participante.
 
 Análisis complementarios:
@@ -589,13 +600,13 @@ Fuentes de error inevitables:
 3. **Ruido del hilo principal.** Extensiones, otras pestañas y procesos del sistema añaden decenas de milisegundos ocasionales.
 4. **Suspensión en segundo plano.** Si la pestaña deja de ser visible, el navegador reduce prioridad; por eso esos ensayos se marcan.
 
-**Implicación práctica.** El error de medición es del orden de **decenas de milisegundos**. Frente a intervalos de 2 a 30 segundos, donde la variabilidad humana normal es de cientos de milisegundos a varios segundos, ese error es despreciable.
+**Implicación práctica.** El error de medición es del orden de **decenas de milisegundos**. Frente a intervalos de 2 a 48 segundos, donde la variabilidad humana normal es de cientos de milisegundos a varios segundos, ese error es despreciable.
 
 **Dónde no sirve.** Esta herramienta **no** es adecuada para discriminación temporal fina, tiempos de reacción simples ni intervalos por debajo de 500 ms. Eso requiere software de laboratorio con hardware sincronizado.
 
 **Redacción sugerida para el apartado de método:**
 
-> «La tarea se administró mediante una aplicación web desarrollada específicamente para este estudio, que registra los intervalos producidos con `performance.now()`, el reloj monótono de alta resolución del navegador. Todas las sesiones se aplicaron en el mismo equipo y navegador ([modelo], [navegador y versión]) para mantener constante la latencia del sistema. El error de medición estimado (resolución del reloj más latencia de entrada) es del orden de decenas de milisegundos, despreciable frente a los intervalos evaluados (2–30 s). La aplicación registró automáticamente pérdidas de foco de ventana y cambios de visibilidad de pestaña; los ensayos con estos eventos se marcaron y el análisis se reporta con y sin ellos.»
+> «La tarea se administró mediante una aplicación web desarrollada específicamente para este estudio, que registra los intervalos producidos con `performance.now()`, el reloj monótono de alta resolución del navegador. Todas las sesiones se aplicaron en el mismo equipo y navegador ([modelo], [navegador y versión]) para mantener constante la latencia del sistema. El error de medición estimado (resolución del reloj más latencia de entrada) es del orden de decenas de milisegundos, despreciable frente a los intervalos evaluados (2–48 s). La aplicación registró automáticamente pérdidas de foco de ventana y cambios de visibilidad de pestaña; los ensayos con estos eventos se marcaron y el análisis se reporta con y sin ellos.»
 
 ---
 
