@@ -117,3 +117,7 @@ El proyecto está preparado para publicarse directamente desde la raíz de la ra
 - Aplicación: 1.1.0
 - Manual: 1.1
 - Adaptación para GitHub Pages: agosto de 2026
+
+## Demo para presentación
+
+Abre [demo.html](demo.html) o el botón «Demo para presentación» en la app. El recorrido interactivo muestra una versión abreviada del procedimiento con ejemplos ficticios. No solicita consentimiento, no guarda respuestas y no exporta datos de investigación. La demo no reemplaza el protocolo completo ni la sesión de participante.
